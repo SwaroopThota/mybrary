@@ -1,0 +1,14 @@
+<div class="container my-4">
+    <h1>All Authors</h1>
+    <form method="get" action="/authors" class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Author Name" name="name" value="<%= locals.searchOptions %>">
+        <button class="btn btn-outline-primary" type="submit">Search Author</button>
+    </form>
+    <% authors.forEach( (author)=>{ %> 
+        <div class="card my-2">
+            <div class="card-body">
+              <h5><%= author.name %></h5>
+            </div>
+        </div>
+    <% }) %> 
+</div>
