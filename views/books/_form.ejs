@@ -7,7 +7,8 @@
     <select name="author" id="author" class="form-select">
         <option value="" label="Select Author" />
         <% authors.forEach((author)=>{ %> 
-            <option value="<%= author._id %>" label="<%= author.name %>" <%= (author._id.toString() === book.author.toString())?"selected":"" %> >
+            <option value="<%= author._id %>" label="<%= author.name %>" 
+                <%= (book.author !== undefined && author._id.toString() === book.author.toString())?"selected":"" %> >
         <% }); %> 
     </select>
 </div>
