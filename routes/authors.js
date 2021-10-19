@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Author = require('../models/author');
 
-router.use(express.urlencoded({ extended: true }));
 router.get('/', async (req, res) => {
     const searchOptions = {};
     if(req.params.name !== null || req.query.name !== ''){

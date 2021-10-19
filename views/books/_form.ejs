@@ -1,0 +1,33 @@
+<div class="col-md-6">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" value="<%= book.title %>" >
+</div>
+<div class="col-md-6">
+    <label for="Author" class="form-label">Author</label>
+    <select name="author" id="author" class="form-select">
+        <option value="" label="Select Author" />
+        <% authors.forEach((author)=>{ %> 
+            <option value="<%= author._id %>" label="<%= author.name %>" <%= (author._id.toString() === book.author.toString())?"selected":"" %> >
+        <% }); %> 
+    </select>
+</div>
+<div class="col-md-6">
+    <label for="publishDate" class="form-label">Publish Date</label>
+    <input type="date" class="form-control" id="publishDate" name="publishDate" 
+    value="<%= (book.publishDate === null || book.publishDate === undefined)? "" : book.publishDate.toISOString().split('T')[0] %>" >
+</div>
+<div class="col-md-6">
+    <label for="pageCount" class="form-label">Page Count</label>
+    <input type="number" min="1" class="form-control" id="pageCount" name="pageCount" value="<%= book.pageCount %>">
+</div>
+<div class="col-md-4">
+    <label for="coverImage" class="form-label">Upload you book cover image</label>
+    <input class="filepond" id="coverImage" type="file" name="cover" >
+</div>
+<div class="col-md-8">
+    <label for="pageCount" class="form-label">Description</label>
+    <textarea class="form-control" name="desc"><%= book.desc %> </textarea>
+</div>
+<div class="col-12">
+    <input type="submit" class="btn btn-primary ms-auto">
+</div>

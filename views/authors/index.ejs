@@ -4,11 +4,14 @@
         <input type="text" class="form-control" placeholder="Author Name" name="name" value="<%= locals.searchOptions %>">
         <button class="btn btn-outline-primary" type="submit">Search Author</button>
     </form>
+    <% if(authors.length === 0){ %> 
+        <p class="form-text">No Authors found.</p>
+    <% }else{ %> 
     <% authors.forEach( (author)=>{ %> 
         <div class="card my-2">
             <div class="card-body">
               <h5><%= author.name %></h5>
             </div>
         </div>
-    <% }) %> 
+    <% })} %> 
 </div>
