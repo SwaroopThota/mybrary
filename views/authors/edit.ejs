@@ -1,0 +1,7 @@
+<div class="container my-4">
+    <h1>Edit Author</h1>
+    <form action="/authors/<%= author.id%>?_method=PUT" method="POST">
+        <%- include('_form',{btnText: 'Edit Author'}) %> 
+        <a href="/authors/<%= author.id%>"class="btn btn-danger">cancel</a>
+    </form>
+    </div>

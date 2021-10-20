@@ -7,6 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const port = process.env.PORT || 3000;
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
+const methodOverride = require('method-override');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')))
@@ -18,6 +19,7 @@ app.use(express.urlencoded({
     limit: '10mb',
     extended: false,
   }));
+app.use(methodOverride('_method'));
 
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection;

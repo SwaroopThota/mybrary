@@ -9,8 +9,15 @@
     <% }else{ %> 
     <% authors.forEach( (author)=>{ %> 
         <div class="card my-2">
-            <div class="card-body">
+            <div class="card-body d-flex">
               <h5><%= author.name %></h5>
+              <div class="d-flex ms-auto">
+              <a href="/authors/<%= author.id %>" class="btn btn-primary">View</a>
+              <a href="/authors/<%= author.id %>/edit" class="btn btn-primary mx-2">Edit</a>
+              <form action="/authors/<%= author.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
             </div>
         </div>
     <% })} %> 
