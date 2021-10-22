@@ -32,8 +32,7 @@ router.get('/new',(req, res) => {
 router.get('/:id', async (req, res) => {
      try {
          const books = await Book.find({author: req.author.id }).limit(10).exec();
-         res.render('./authors/showAuthor', { author: req.author, booksByAuthor: books });
-
+         res.render('authors/showAuthor', { author: req.author, booksByAuthor: books });
      } catch (err) {
          console.log(err);
          res.redirect('/authors');
@@ -64,9 +63,9 @@ router.param('id',async (req,res,next,id)=>{
     try {
         const author = await Author.findById(id);
         req.author = author;
+        next();
     } catch (err) {
         console.log(err);
     }
-    next();
 })
 module.exports = router;

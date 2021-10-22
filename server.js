@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
 const methodOverride = require('method-override');
+const Book = require('./models/book');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')))
@@ -26,8 +27,13 @@ const db = mongoose.connection;
 db.on('error', err =>console.error(err));
 db.once('open',()=>{console.log("Connected to MongoDB successfully")})
 
-app.get('/',(req, res) =>{
-    res.render('index');
+app.get('/',async (req, res) =>{
+    try {
+        const books = await Book.find({}).sort({createdAt: -1}).limit(10).exec();
+        res.render('index', { books: books });
+    } catch (error) {
+        res.render('index', { error: "Technical issue."});
+    }
 })
 app.use('/authors',authorsRouter);
 app.use('/books',booksRouter);
