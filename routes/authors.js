@@ -5,7 +5,7 @@ const Book = require('../models/book');
 
 router.get('/', async (req, res) => {
     const searchOptions = {};
-    if(req.params.name !== null || req.query.name !== ''){
+    if(req.query.name !== null || req.query.name !== ''){
         searchOptions.name = new RegExp(req.query.name,'i');
     }
     try{
